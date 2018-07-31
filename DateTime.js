@@ -92,7 +92,7 @@ var Datetime = createClass({
 		else
 			inputValue = date || '';
 
-		return {
+		var state = {
 			updateOn: updateOn,
 			inputFormat: formats.datetime,
 			viewDate: viewDate,
@@ -100,6 +100,12 @@ var Datetime = createClass({
 			inputValue: inputValue,
 			open: props.open
 		};
+
+		for (var val in state) {
+			state[val] === undefined ? delete state[val] : '';
+		}
+
+		return state;
 	},
 
 	getUpdateOn: function( formats ) {
@@ -151,14 +157,8 @@ var Datetime = createClass({
 			updatedState = this.getStateFromProps( nextProps );
 		}
 
-		if ( updatedState.open === undefined ) {
-			if ( typeof nextProps.open !== 'undefined' ) {
-				updatedState.open = nextProps.open;
-			} else if ( this.props.closeOnSelect && this.state.currentView !== viewModes.TIME ) {
-				updatedState.open = false;
-			} else {
-				updatedState.open = this.state.open;
-			}
+		if ( typeof nextProps.open !== 'undefined' ) {
+			updatedState.open = nextProps.open;
 		}
 
 		if ( nextProps.viewMode !== this.props.viewMode ) {

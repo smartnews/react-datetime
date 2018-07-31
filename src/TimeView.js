@@ -179,7 +179,7 @@ var DateTimePickerTime = onClickOutside( createClass({
 			me.mouseUpListener = function() {
 				clearTimeout( me.timer );
 				clearInterval( me.increaseTimer );
-				me.props.setTime( type, me.state[ type ] );
+				me.props.setTime( type, update[ type ] );
 				document.body.removeEventListener( 'mouseup', me.mouseUpListener );
 				document.body.removeEventListener( 'touchend', me.mouseUpListener );
 			};
