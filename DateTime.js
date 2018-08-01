@@ -365,9 +365,15 @@ var Datetime = createClass({
 
 	openCalendar: function( e ) {
 		if ( !this.state.open ) {
-			this.setState({ open: true }, function() {
-				this.props.onFocus( e );
-			});
+			this.setState(
+				{
+					open: true,
+					viewDate: this.state.selectedDate.startOf('month'),
+				},
+				function() {
+					this.props.onFocus( e );
+				}
+			);
 		}
 	},
 
