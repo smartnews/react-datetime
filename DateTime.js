@@ -225,7 +225,9 @@ var Datetime = createClass({
 		}
 
 		return this.setState( update, function() {
-			return this.props.onChange( localMoment.isValid() ? localMoment : this.state.inputValue );
+			if (localMoment.isValid()) {
+				return this.props.onChange(localMoment);
+			}
 		});
 	},
 
