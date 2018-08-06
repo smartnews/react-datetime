@@ -371,7 +371,7 @@ var Datetime = createClass({
 				{
 					open: true,
 					viewDate: this.state.selectedDate ?
-					  this.state.selectedDate.startOf('month') : this.localMoment().startOf('month')
+					  this.state.selectedDate.clone().startOf('month') : this.localMoment().startOf('month')
 				},
 				function() {
 					this.props.onFocus( e );
